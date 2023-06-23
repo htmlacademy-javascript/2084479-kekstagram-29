@@ -47,13 +47,15 @@ const getOnePhoto = () => ({
   comments: getComments(getRandomInteger(MIN_COMMENTS, MAX_COMMENTS))
 });
 
-const getPhotos = (count) => {
-  const photos = [];
+// const getPhotos = (count) => {
+//   const photos = [];
 
-  for (let i = 1; i <= count; i++) {
-    photos.push(getOnePhoto());
-  }
-  return photos;
-};
+//   for (let i = 1; i <= count; i++) {
+//     photos.push(getOnePhoto());
+//   }
+//   return photos;
+// };
+
+const getPhotos = () => Array.from({length: PHOTOS}, getOnePhoto);
 
 export { getPhotos };
