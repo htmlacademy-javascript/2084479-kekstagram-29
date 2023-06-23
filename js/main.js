@@ -1,3 +1,4 @@
 import { getPhotos } from './data.js';
+import { renderThumbnail } from './thumbnail.js';
 
-console.log(getPhotos());
+renderThumbnail(getPhotos());
