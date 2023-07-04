@@ -1,9 +1,9 @@
 // Функция для проверки длины строки
-const checkLength = (string, length) => string.length <= length;
+const checkLength = (str, length) => str.length <= length;
 
 // Функция для проверки, является ли строка палиндромом
-const isPalindrome = (string) => {
-  let editedStr = string.replaceAll(' ', '').toLowerCase();
+const isPalindrome = (str) => {
+  const editedStr = str.replaceAll(' ', '').toLowerCase();
   let newStr = '';
   for (let i = editedStr.length - 1; i >= 0; i--) {
     newStr += editedStr[i];
@@ -12,6 +12,7 @@ const isPalindrome = (string) => {
 };
 
 // Функция принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа
+
 const returnIntegers = (str) => {
 
   str = str.toString();
