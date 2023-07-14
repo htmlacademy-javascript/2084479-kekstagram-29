@@ -1,5 +1,6 @@
 import { COMMENTS_DOSE } from './constants.js';
 
+const outsideBigPicture = document.querySelector('.overlay');
 const bigPicture = document.querySelector('.big-picture');
 const closeButton = document.querySelector('.big-picture__cancel');
 const bigPictureImage = bigPicture.querySelector('.big-picture__img img');
@@ -46,6 +47,7 @@ const renderComments = () => {
 };
 
 const openBigPicture = (photo) => {
+  document.body.classList.add('modal-open'); // удаляем второй скролл
   commentsVolume = photo.comments.length;
   bigPictureCommentContainer.innerHTML = '';
   bigPicture.classList.remove('hidden');
@@ -63,6 +65,7 @@ const openBigPicture = (photo) => {
   renderComments(photo.comments);
 
   document.addEventListener('keydown', onClickEsc);
+  outsideBigPicture.addEventListener('click', onClickOutside);
 };
 
 bigPictureCommentLoader.addEventListener('click', (evt) => {
@@ -73,8 +76,10 @@ bigPictureCommentLoader.addEventListener('click', (evt) => {
 );
 
 const closeBigPicture = () => {
+  document.body.classList.remove('modal-open');
   bigPicture.classList.add('hidden');
   document.removeEventListener('keydown', onClickEsc);
+  outsideBigPicture.removeEventListener('click', onClickOutside);
 };
 
 closeButton.addEventListener('click', () => {
@@ -83,6 +88,12 @@ closeButton.addEventListener('click', () => {
 
 function onClickEsc(evt) {
   if (evt.key === 'Escape') {
+    closeBigPicture();
+  }
+}
+
+function onClickOutside(evt) {
+  if (evt.target.classList.contains('overlay')) {
     closeBigPicture();
   }
 }
