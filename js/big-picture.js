@@ -9,20 +9,15 @@ const bigPictureTitle = bigPicture.querySelector('.social__caption');
 const bigPictureCommentsCount = bigPicture.querySelector('.social__comment-count');
 const bigPictureCommentContainer = bigPicture.querySelector('.social__comments');
 const bigPictureCommentItem = bigPicture.querySelector('.social__comment');
-const bigPictureCommentField = bigPicture.querySelector('.social__footer-text');
 const bigPictureCommentLoader = bigPicture.querySelector('.social__comments-loader');
 
 const commentsList = [];
 
 let commentsVolume = 0;
 
-const renderButtonLoader = () => {
-  if (!commentsList.length) {
-    bigPictureCommentLoader.classList.add('hidden');
-  } else {
-    bigPictureCommentLoader.classList.remove('hidden');
-  }
-};
+const renderButtonLoader = () => !commentsList.length
+  ? bigPictureCommentLoader.classList.add('hidden')
+  : bigPictureCommentLoader.classList.remove('hidden');
 
 const renderStatistic = () => {
   bigPictureCommentsCount.innerHTML = `${commentsVolume - commentsList.length} из <span class="comments-count">${commentsVolume}</span> комментариев`;
@@ -47,26 +42,23 @@ const renderComments = () => {
 };
 
 const openBigPicture = (photo) => {
-  document.body.classList.add('modal-open'); // удаляем второй скролл
-  commentsVolume = photo.comments.length;
-  bigPictureCommentContainer.innerHTML = '';
+  document.body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
+  bigPictureCommentContainer.innerHTML = '';
   bigPictureImage.src = photo.url;
   bigPictureLikes.textContent = photo.likes;
   bigPictureTitle.textContent = photo.description;
 
-  commentsList.length = 0; // обнулим массив
+  commentsVolume = photo.comments.length;
+  commentsList.length = 0;
   commentsList.push(...photo.comments.slice());
-
-  photo.comments.length === 0
-    ? bigPictureCommentField.placeholder = 'Будьте первым комментатором!'
-    : bigPictureCommentField.placeholder = 'Ваш комментарий...';
-
-  renderComments(photo.comments);
 
   document.addEventListener('keydown', onClickEsc);
   outsideBigPicture.addEventListener('click', onClickOutside);
+
+  renderComments();
 };
+
 
 bigPictureCommentLoader.addEventListener('click', (evt) => {
   evt.preventDefault();
