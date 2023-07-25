@@ -1,4 +1,3 @@
-import { postPhoto } from './api.js';
 import { validateForm } from './validation.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
@@ -62,18 +61,20 @@ uploadForm.addEventListener('submit', (evt) => {
     postPhoto(new FormData(evt.target))
       .then((response) => {
         if (response.ok) {
-          showPopupSuccess();
-          closeModal();
-        } else {
-          showPopupError();
-        }
-      })
-      .catch(() => {
+        showPopupSuccess();
+        closeModal();
+      } else {
         showPopupError();
-      })
-      .finally(() => {
+        document.removeEventListener('keydown', onEscForm);
+      }
+    })
+    .catch(() => {
+      showPopupError();
+      document.removeEventListener('keydown', onEscForm);
+    })
+    .finally(() => {
         enabledSubmitButton();
-      });
+    });
   }
 });
 

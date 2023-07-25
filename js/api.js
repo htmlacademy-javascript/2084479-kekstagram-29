@@ -14,7 +14,10 @@ const getPhotos = () =>
       }
       response.json();
     })
-    .catch();
+    .catch(() => {
+      showAlert('err');
+      throw new Error();
+    });
 
 
 const postPhoto = (body) =>

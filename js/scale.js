@@ -7,13 +7,13 @@ import {
 const minus = document.querySelector('.scale__control--smaller');
 const plus = document.querySelector('.scale__control--bigger');
 const scaleControl = document.querySelector('.scale__control--value');
+const previewImage = document.querySelector('.img-upload__preview img');
 
 let scale;
 
 const renderScale = () => {
   scaleControl.value = `${scale}%`;
-  const PreviewImage = document.querySelector('.img-upload__preview img');
-  PreviewImage.style = `transform: scale(${scale * 0.01})`;
+  previewImage.style = `transform: scale(${scale * 0.01})`;
 
   if (scale === MIN_SCALE) {
     minus.disabled = true;
