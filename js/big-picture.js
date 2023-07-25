@@ -53,7 +53,7 @@ const openBigPicture = (photo) => {
   commentsList.length = 0;
   commentsList.push(...photo.comments.slice());
 
-  document.addEventListener('keydown', onClickEsc);
+  document.addEventListener('keydown', onEscForm);
   outsideBigPicture.addEventListener('click', onClickOutside);
 
   renderComments();
@@ -70,7 +70,7 @@ bigPictureCommentLoader.addEventListener('click', (evt) => {
 const closeBigPicture = () => {
   document.body.classList.remove('modal-open');
   bigPicture.classList.add('hidden');
-  document.removeEventListener('keydown', onClickEsc);
+  document.removeEventListener('keydown', onEscForm);
   outsideBigPicture.removeEventListener('click', onClickOutside);
 };
 
@@ -78,7 +78,7 @@ closeButton.addEventListener('click', () => {
   closeBigPicture();
 });
 
-function onClickEsc(evt) {
+function onEscForm(evt) {
   if (evt.key === 'Escape') {
     closeBigPicture();
   }

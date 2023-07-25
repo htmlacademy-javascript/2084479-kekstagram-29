@@ -1,5 +1,3 @@
-
-
 const sliderElement = document.querySelector('.effect-level__slider ');
 const radioList = document.querySelector('.effects__list');
 const valueElement = document.querySelector('.effect-level__value');
@@ -10,9 +8,9 @@ const originalRadio = document.querySelector('#effect-none');
 noUiSlider.create(sliderElement, {
   range: {
     min: 0,
-    max: 100,
+    max: 1,
   },
-  start: 100,
+  start: 1,
   connect: 'lower',
 });
 
