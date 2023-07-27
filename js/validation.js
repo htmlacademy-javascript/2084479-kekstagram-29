@@ -2,7 +2,7 @@ import { checkLength } from './utils.js';
 import {
   MAX_DESCRIPTION_LENGTH,
   MAX_HASHTAGS_VOLUME,
-  HASHTAG_SYMBOLS,
+  HASHTAG_SYMBOLS
 } from './constants.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
@@ -50,7 +50,7 @@ const validateHashtag = (value) => {
 pristine.addValidator(
   hashtagsField,
   validateHashtag,
-  'введён невалидный хэш-тег',
+  'Введён невалидный хэш-тег',
   1,
   true
 );

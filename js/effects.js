@@ -1,6 +1,4 @@
-
-
-const sliderElement = document.querySelector('.effect-level__slider ');
+const sliderElement = document.querySelector('.effect-level__slider');
 const radioList = document.querySelector('.effects__list');
 const valueElement = document.querySelector('.effect-level__value');
 const image = document.querySelector('.img-upload__preview img');
@@ -10,9 +8,9 @@ const originalRadio = document.querySelector('#effect-none');
 noUiSlider.create(sliderElement, {
   range: {
     min: 0,
-    max: 100,
+    max: 1,
   },
-  start: 100,
+  start: 1,
   connect: 'lower',
 });
 
@@ -108,6 +106,7 @@ radioList.addEventListener('change', (evt) => {
     if (evt.target.value === 'none') {
       defaultImage();
     } else {
+      updateSliderOption(evt.target.value);
       renderEffect(evt.target.value);
       sliderBlock.classList.remove('hidden');
     }

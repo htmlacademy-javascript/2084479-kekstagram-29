@@ -451,6 +451,7 @@ main {
 }
 
 .scale__control--smaller:disabled {
+  transform: none;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -484,6 +485,7 @@ main {
 }
 
 .scale__control--bigger:disabled {
+  transform: none;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
