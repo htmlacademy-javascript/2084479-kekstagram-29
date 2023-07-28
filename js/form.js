@@ -1,11 +1,12 @@
 import { validateForm } from './validation.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
+import { postPhoto } from './api.js';
 import {
   showPopupSuccess,
   showPopupError,
 } from './popups.js';
-import { SUBMIT_BUTTON_TEXT } from './constants.js';
+import { SubmitButtonText } from './constants.js';
 
 const uploadControl = document.querySelector('.img-upload__input');
 const uploadModal = document.querySelector('.img-upload__overlay');
@@ -42,12 +43,12 @@ const closeModal = () => {
 };
 
 const disabledSubmitButton = () => {
-  submitButton.textContent = SUBMIT_BUTTON_TEXT.SENDING;
+  submitButton.textContent = SubmitButtonText.SENDING;
   submitButton.disabled = true;
 };
 
 const enabledSubmitButton = () => {
-  submitButton.textContent = SUBMIT_BUTTON_TEXT.IDLE;
+  submitButton.textContent = SubmitButtonText.IDLE;
   submitButton.disabled = false;
 };
 
@@ -61,20 +62,20 @@ uploadForm.addEventListener('submit', (evt) => {
     postPhoto(new FormData(evt.target))
       .then((response) => {
         if (response.ok) {
-        showPopupSuccess();
-        closeModal();
-      } else {
+          showPopupSuccess();
+          closeModal();
+        } else {
+          showPopupError();
+          document.removeEventListener('keydown', onEscForm);
+        }
+      })
+      .catch(() => {
         showPopupError();
         document.removeEventListener('keydown', onEscForm);
-      }
-    })
-    .catch(() => {
-      showPopupError();
-      document.removeEventListener('keydown', onEscForm);
-    })
-    .finally(() => {
+      })
+      .finally(() => {
         enabledSubmitButton();
-    });
+      });
   }
 });
 
