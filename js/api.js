@@ -1,6 +1,7 @@
 import {
   POST_DATA_URL,
-  GET_DATA_URL
+  GET_DATA_URL,
+  ERROR_MESSAGE
 } from './constants.js';
 
 import { showAlert } from './utils.js';
@@ -9,13 +10,13 @@ const getPhotos = () =>
   fetch(GET_DATA_URL)
     .then((response) => {
       if (!response.ok) {
-        showAlert('err');
+        showAlert(ERROR_MESSAGE);
         throw new Error();
       }
-      response.json();
+      return response.json();
     })
     .catch(() => {
-      showAlert('err');
+      showAlert(ERROR_MESSAGE);
       throw new Error();
     });
 

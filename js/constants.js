@@ -9,16 +9,21 @@ const SCALE_STEP = 25;
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 
+const SubmitButtonText = {
+  IDLE: 'Опубликовать',
+  SENDING: 'Загрузка...'
+};
+
 const ALERT_SHOW_TIME = 5000;
 
 const POST_DATA_URL = 'https://29.javascript.pages.academy/kekstagram';
 const GET_DATA_URL = 'https://29.javascript.pages.academy/kekstagram/data';
 
-const SUBMIT_BUTTON_TEXT = {
-  IDLE: 'Опубликовать',
-  SENDING: 'Загрузка...'
-};
+const ERROR_MESSAGE = 'Ошибка загрузки';
 
+const RANDON_PHOTOS_NUMBER = 10;
+
+const RERENDER_DELAY = 500;
 
 export {
   COMMENTS_DOSE,
@@ -30,6 +35,9 @@ export {
   MAX_SCALE,
   POST_DATA_URL,
   GET_DATA_URL,
-  SUBMIT_BUTTON_TEXT,
-  ALERT_SHOW_TIME
+  SubmitButtonText,
+  ALERT_SHOW_TIME,
+  ERROR_MESSAGE,
+  RANDON_PHOTOS_NUMBER,
+  RERENDER_DELAY
 };
