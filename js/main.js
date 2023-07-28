@@ -1,6 +1,9 @@
-import { getPhotos } from './data.js';
+import { getPhotos } from './api.js';
 import { renderThumbnail } from './thumbnail.js';
 import './form.js';
-import './scale.js';
 
-renderThumbnail(getPhotos());
+getPhotos()
+  .then((photos) => {
+    renderThumbnail(photos);
+    // показать Перламутровые пуговицы
+  });

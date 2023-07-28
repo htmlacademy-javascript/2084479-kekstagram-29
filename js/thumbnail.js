@@ -7,6 +7,7 @@ const pictureFragment = document.createDocumentFragment();
 const renderThumbnail = (pictures) => {
   pictures.forEach((element) => {
     const pictureElement = pictureTemplate.cloneNode(true);
+
     pictureElement.dataset.id = element.id;
     pictureElement.querySelector('.picture__img').src = element.url;
     pictureElement.querySelector('.picture__img').alt = element.description;
@@ -14,6 +15,7 @@ const renderThumbnail = (pictures) => {
     pictureElement.querySelector('.picture__likes').textContent = element.likes;
     pictureFragment.append(pictureElement);
   });
+
   pictureContainer.append(pictureFragment);
 
   pictureContainer.addEventListener('click', (evt) => {
