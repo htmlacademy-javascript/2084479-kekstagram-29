@@ -15,6 +15,7 @@ const commentsList = [];
 
 let commentsVolume = 0;
 
+
 const renderButtonLoader = () => !commentsList.length
   ? bigPictureCommentLoader.classList.add('hidden')
   : bigPictureCommentLoader.classList.remove('hidden');
