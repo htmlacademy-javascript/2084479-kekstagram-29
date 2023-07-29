@@ -19,7 +19,7 @@ const ALERT_SHOW_TIME = 5000;
 const POST_DATA_URL = 'https://29.javascript.pages.academy/kekstagram';
 const GET_DATA_URL = 'https://29.javascript.pages.academy/kekstagram/data';
 
-const ERROR_MESSAGE = 'Ошибка загрузки';
+const ERROR_MESSAGE = 'Ошибка загрузки сервера';
 
 const RANDON_PHOTOS_NUMBER = 10;
 

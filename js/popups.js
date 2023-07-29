@@ -29,6 +29,7 @@ const showPopupError = () => {
 function closePopup() {
   document.querySelector('.popup').remove();
   document.removeEventListener('keydown', onEscKeydown);
+  document.removeEventListener('click', onClickOutside);
 }
 
 function onEscKeydown(evt) {
