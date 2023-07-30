@@ -2,7 +2,8 @@ import { checkLength } from './utils.js';
 import {
   MAX_DESCRIPTION_LENGTH,
   MAX_HASHTAGS_VOLUME,
-  HASHTAG_SYMBOLS
+  HASHTAG_SYMBOLS,
+  ErrorText
 } from './constants.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
@@ -16,7 +17,7 @@ const pristine = new Pristine(
     errorTextParent: 'img-upload__field-wrapper',
     errorTextTag: 'p',
     errorTextClass: 'form__error'
-  },
+  }
 );
 
 const getTagsArray = (value) => value.replace(/ +/g, ' ')
@@ -37,8 +38,8 @@ const validateHashtagsVolume = (value) => getTagsArray(value).length <= MAX_HASH
 pristine.addValidator(
   hashtagsField,
   validateHashtagsVolume,
-  `Количество хештегов не должно превышать ${MAX_HASHTAGS_VOLUME}`,
-  1,
+  ErrorText.INVALID_COUNT,
+  3,
   true
 );
 
@@ -50,8 +51,8 @@ const validateHashtag = (value) => {
 pristine.addValidator(
   hashtagsField,
   validateHashtag,
-  'Введён невалидный хэш-тег',
-  1,
+  ErrorText.NOT_UNIQUE,
+  2,
   true
 );
 
@@ -64,11 +65,14 @@ const validateUniqueHashtag = (value) => {
 pristine.addValidator(
   hashtagsField,
   validateUniqueHashtag,
-  'Хештег не должен повторяться',
+  ErrorText.INVALID_PATTERN,
   1,
   true
 );
 
 const validateForm = () => pristine.validate();
 
-export { validateForm };
+export {
+  validateForm,
+  pristine
+};

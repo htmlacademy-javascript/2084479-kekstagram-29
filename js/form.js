@@ -1,4 +1,7 @@
-import { validateForm } from './validation.js';
+import {
+  validateForm,
+  pristine
+} from './validation.js';
 import { resetScale } from './scale.js';
 import { resetEffects } from './effects.js';
 import { postPhoto } from './api.js';
@@ -32,6 +35,7 @@ const showModal = () => {
   uploadModal.addEventListener('click', onClickOutside);
   resetScale();
   resetEffects();
+  pristine.reset();
 };
 
 const closeModal = () => {

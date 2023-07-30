@@ -43,6 +43,7 @@ const renderComments = () => {
 };
 
 const openBigPicture = (photo) => {
+
   document.body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
   bigPictureCommentContainer.innerHTML = '';
