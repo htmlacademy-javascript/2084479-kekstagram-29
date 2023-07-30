@@ -5,6 +5,12 @@ const MAX_HASHTAGS_VOLUME = 5;
 
 const HASHTAG_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
 
+const ErrorText = {
+  INVALID_COUNT: `Количество хештегов не должно превышать ${MAX_HASHTAGS_VOLUME}`,
+  NOT_UNIQUE: 'Введён невалидный хэш-тег',
+  INVALID_PATTERN: 'Хештег не должен повторяться'
+};
+
 const SCALE_STEP = 25;
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
@@ -29,6 +35,7 @@ export {
   COMMENTS_DOSE,
   MAX_DESCRIPTION_LENGTH,
   MAX_HASHTAGS_VOLUME,
+  ErrorText,
   HASHTAG_SYMBOLS,
   SCALE_STEP,
   MIN_SCALE,
