@@ -15,6 +15,49 @@ const SCALE_STEP = 25;
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 
+const EffectsOptions = {
+  CHROME: {
+    range: {
+      min: 0,
+      max: 1,
+    },
+    start: 1,
+    step: 0.1,
+  },
+  SEPIA: {
+    range: {
+      min: 0,
+      max: 1,
+    },
+    step: 0.1,
+    start: 1,
+  },
+  MARVIN: {
+    range: {
+      min: 0,
+      max: 100,
+    },
+    step: 1,
+    start: 100,
+  },
+  PHOBOS: {
+    range: {
+      min: 0,
+      max: 3,
+    },
+    step: 0.1,
+    start: 3,
+  },
+  HEAT: {
+    range: {
+      min: 1,
+      max: 3,
+    },
+    step: 0.1,
+    start: 3,
+  }
+};
+
 const SubmitButtonText = {
   IDLE: 'Опубликовать',
   SENDING: 'Загрузка...'
@@ -36,6 +79,7 @@ export {
   MAX_DESCRIPTION_LENGTH,
   MAX_HASHTAGS_VOLUME,
   ErrorText,
+  EffectsOptions,
   HASHTAG_SYMBOLS,
   SCALE_STEP,
   MIN_SCALE,

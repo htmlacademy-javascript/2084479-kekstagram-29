@@ -1,3 +1,5 @@
+import { EffectsOptions } from './constants.js';
+
 const sliderElement = document.querySelector('.effect-level__slider');
 const radioList = document.querySelector('.effects__list');
 const valueElement = document.querySelector('.effect-level__value');
@@ -15,58 +17,8 @@ noUiSlider.create(sliderElement, {
 });
 
 const updateSliderOption = (effect) => {
-  switch (effect) {
-    case 'chrome':
-      sliderElement.noUiSlider.updateOptions({
-        range: {
-          min: 0,
-          max: 1,
-        },
-        start: 1,
-        step: 0.1,
-      });
-      break;
-    case 'sepia':
-      sliderElement.noUiSlider.updateOptions({
-        range: {
-          min: 0,
-          max: 1,
-        },
-        step: 0.1,
-        start: 1,
-      });
-      break;
-    case 'marvin':
-      sliderElement.noUiSlider.updateOptions({
-        range: {
-          min: 0,
-          max: 100,
-        },
-        step: 1,
-        start: 100,
-      });
-      break;
-    case 'phobos':
-      sliderElement.noUiSlider.updateOptions({
-        range: {
-          min: 0,
-          max: 3,
-        },
-        step: 0.1,
-        start: 3,
-      });
-      break;
-    case 'heat':
-      sliderElement.noUiSlider.updateOptions({
-        range: {
-          min: 1,
-          max: 3,
-        },
-        step: 0.1,
-        start: 3,
-      });
-      break;
-  }
+  sliderElement.noUiSlider
+    .updateOptions(EffectsOptions[effect.toUpperCase()]);
 };
 
 const renderEffect = (effect) => {
